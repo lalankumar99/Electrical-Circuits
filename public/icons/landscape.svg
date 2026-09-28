@@ -1,0 +1,136 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  fill="none"
+>
+  <defs>
+    <linearGradient
+      id="landscapeGradient"
+      x1="8"
+      y1="12"
+      x2="56"
+      y2="52"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#6FF7FF"/>
+      <stop offset="0.45" stop-color="#00D9FF"/>
+      <stop offset="1" stop-color="#167BFF"/>
+    </linearGradient>
+
+    <filter
+      id="landscapeGlow"
+      x="-80%"
+      y="-80%"
+      width="260%"
+      height="260%"
+    >
+      <feGaussianBlur
+        stdDeviation="1.8"
+        result="blur"
+      />
+
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect
+    x="9"
+    y="18"
+    width="46"
+    height="28"
+    rx="4"
+    stroke="url(#landscapeGradient)"
+    stroke-width="2.5"
+    filter="url(#landscapeGlow)"
+  />
+
+  <rect
+    x="15"
+    y="23"
+    width="34"
+    height="18"
+    rx="2"
+    fill="#071B2B"
+    stroke="#00D9FF"
+    stroke-width="1"
+    opacity="0.9"
+  />
+
+  <path
+    d="M20 36L27 29L32 34L37 28L44 36"
+    stroke="#00E5FF"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <circle
+    cx="39"
+    cy="27"
+    r="2"
+    fill="#00E5FF"
+  />
+
+  <path
+    d="M5 18V13H10"
+    stroke="#00E5FF"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M54 13H59V18"
+    stroke="#167BFF"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M5 46V51H10"
+    stroke="#167BFF"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M54 51H59V46"
+    stroke="#00D9FF"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <circle
+    cx="5"
+    cy="18"
+    r="1.8"
+    fill="#00E5FF"
+  />
+
+  <circle
+    cx="59"
+    cy="18"
+    r="1.8"
+    fill="#167BFF"
+  />
+
+  <circle
+    cx="5"
+    cy="46"
+    r="1.8"
+    fill="#167BFF"
+  />
+
+  <circle
+    cx="59"
+    cy="46"
+    r="1.8"
+    fill="#00E5FF"
+  />
+</svg>
