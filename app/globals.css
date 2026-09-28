@@ -1171,3 +1171,79 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+.document-reader.landscape-mode:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  background: #ffffff;
+}
+
+.document-reader.landscape-mode:fullscreen
+  .document-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.document-reader.landscape-mode:fullscreen
+  .markdown-content {
+  width: min(1400px, 100%);
+  max-width: 1400px;
+  min-height: calc(100vh - 70px);
+  margin: 0 auto;
+  padding: 48px 7vw 80px;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.document-reader.landscape-mode:fullscreen
+  .markdown-content
+  img {
+  max-width: 100%;
+  height: auto;
+}
+
+.document-reader.landscape-mode:fullscreen
+  .markdown-content
+  svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+}
+
+.document-reader.landscape-mode:fullscreen
+  .markdown-content
+  table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.document-reader.landscape-mode:fullscreen
+  .markdown-content
+  pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@media (orientation: landscape) {
+  .document-reader.landscape-mode:fullscreen
+    .markdown-content {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+}
+
+@media (max-height: 600px) {
+  .document-reader.landscape-mode:fullscreen
+    .markdown-content {
+    padding-top: 30px;
+    padding-bottom: 60px;
+    font-size: 16px;
+    line-height: 1.75;
+  }
+}
