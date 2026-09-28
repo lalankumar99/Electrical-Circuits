@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function MarkdownReader({
   title,
@@ -8,15 +8,48 @@ export default function MarkdownReader({
 }) {
   const [landscape, setLandscape] = useState(false);
 
+  useEffect(() => {
+    function handleFullscreenChange() {
+      if (!document.fullscreenElement) {
+        setLandscape(false);
+
+        if (screen.orientation?.unlock) {
+          screen.orientation.unlock();
+        }
+      }
+    }
+
+    document.addEventListener(
+      "fullscreenchange",
+      handleFullscreenChange
+    );
+
+    return () => {
+      document.removeEventListener(
+        "fullscreenchange",
+        handleFullscreenChange
+      );
+    };
+  }, []);
+
   async function toggleLandscape() {
     try {
       if (!landscape) {
-        if (document.documentElement.requestFullscreen) {
-          await document.documentElement.requestFullscreen();
+        const reader =
+          document.querySelector(
+            ".document-reader"
+          );
+
+        if (reader?.requestFullscreen) {
+          await reader.requestFullscreen();
         }
 
         if (screen.orientation?.lock) {
-          await screen.orientation.lock("landscape");
+          try {
+            await screen.orientation.lock(
+              "landscape"
+            );
+          } catch {}
         }
 
         setLandscape(true);
@@ -32,7 +65,7 @@ export default function MarkdownReader({
         setLandscape(false);
       }
     } catch {
-      setLandscape(!landscape);
+      setLandscape(true);
     }
   }
 
@@ -63,8 +96,8 @@ export default function MarkdownReader({
           onClick={toggleLandscape}
           aria-label={
             landscape
-              ? "Exit landscape mode"
-              : "Open landscape mode"
+              ? "Exit fullscreen"
+              : "Open fullscreen landscape"
           }
         >
           <img
