@@ -17,7 +17,12 @@ export default function HomePage() {
     return (
       <main className="loading-screen">
         <div className="loading-content">
-          <div className="loading-logo">⚡</div>
+
+          <img
+            src="/icons/electrical.svg"
+            alt="Electrical"
+            className="loading-logo"
+          />
 
           <div className="loading-title">
             Electrical Circuit
@@ -28,6 +33,7 @@ export default function HomePage() {
           </div>
 
           <div className="loading-line" />
+
         </div>
       </main>
     );
@@ -41,11 +47,16 @@ export default function HomePage() {
         <div className="header-inner">
 
           <a href="/" className="brand">
+
             <div className="brand-icon">
-              ⚡
+              <img
+                src="/icons/electrical.svg"
+                alt="Electrical Circuit"
+              />
             </div>
 
             <div className="brand-text">
+
               <div className="brand-title">
                 Electrical Circuit
               </div>
@@ -53,19 +64,25 @@ export default function HomePage() {
               <div className="brand-subtitle">
                 LK Study Studio
               </div>
+
             </div>
+
           </a>
 
           <div className="search-box">
-            <span className="search-icon">
-              🔍
-            </span>
+
+            <img
+              src="/icons/search.svg"
+              alt=""
+              className="search-icon"
+            />
 
             <input
               type="search"
               placeholder="Search topics..."
               aria-label="Search topics"
             />
+
           </div>
 
         </div>
@@ -74,13 +91,22 @@ export default function HomePage() {
 
       {/* HERO */}
       <section className="hero">
+
         <div className="circuit-glow" />
 
         <div className="content-container">
+
           <div className="hero-content">
 
             <div className="hero-badge">
-              ⚡ Electrical Engineering
+
+              <img
+                src="/icons/electrical.svg"
+                alt=""
+              />
+
+              Electrical Engineering
+
             </div>
 
             <h1>
@@ -103,23 +129,27 @@ export default function HomePage() {
                 marginTop: "28px"
               }}
             >
+
               <a
                 href="#study-material"
                 className="primary-button"
               >
-                ⚡ Start Learning
+                Start Learning
               </a>
 
               <a
                 href="/practical"
                 className="secondary-button"
               >
-                🧪 Practical
+                Practical
               </a>
+
             </div>
 
           </div>
+
         </div>
+
       </section>
 
 
@@ -128,10 +158,13 @@ export default function HomePage() {
         className="section"
         id="study-material"
       >
+
         <div className="content-container">
 
           <div className="section-header">
+
             <div>
+
               <h2 className="section-title">
                 Study Materials
               </h2>
@@ -139,7 +172,9 @@ export default function HomePage() {
               <p className="section-description">
                 Organized directly from your GitHub repository.
               </p>
+
             </div>
+
           </div>
 
 
@@ -149,8 +184,14 @@ export default function HomePage() {
               href="/topic/basic-of-electrical-circuit"
               className="card folder-card"
             >
+
               <div className="folder-icon">
-                📁
+
+                <img
+                  src="/icons/folder.svg"
+                  alt="Folder"
+                />
+
               </div>
 
               <div className="folder-title">
@@ -160,6 +201,7 @@ export default function HomePage() {
               <div className="folder-meta">
                 Study topics →
               </div>
+
             </a>
 
 
@@ -167,8 +209,14 @@ export default function HomePage() {
               href="/practical"
               className="card folder-card"
             >
+
               <div className="folder-icon">
-                🧪
+
+                <img
+                  src="/icons/practical.svg"
+                  alt="Practical"
+                />
+
               </div>
 
               <div className="folder-title">
@@ -178,12 +226,19 @@ export default function HomePage() {
               <div className="folder-meta">
                 Experiments and projects →
               </div>
+
             </a>
 
 
             <div className="card folder-card">
+
               <div className="folder-icon">
-                📐
+
+                <img
+                  src="/icons/circuit.svg"
+                  alt="Circuit"
+                />
+
               </div>
 
               <div className="folder-title">
@@ -191,22 +246,27 @@ export default function HomePage() {
               </div>
 
               <div className="folder-meta">
-                Coming from Markdown →
+                SVG and images
               </div>
+
             </div>
 
           </div>
 
         </div>
+
       </section>
 
 
-      {/* FEATURE CARDS */}
+      {/* STUDY TOOLS */}
       <section className="section">
+
         <div className="content-container">
 
           <div className="section-header">
+
             <div>
+
               <h2 className="section-title">
                 Study Tools
               </h2>
@@ -214,20 +274,29 @@ export default function HomePage() {
               <p className="section-description">
                 Everything focused on Electrical Circuit study.
               </p>
+
             </div>
+
           </div>
 
 
           <div className="card-grid">
 
             <div className="card">
+
               <div className="topic-card">
 
                 <div className="topic-icon">
-                  📖
+
+                  <img
+                    src="/icons/notes.svg"
+                    alt="Notes"
+                  />
+
                 </div>
 
                 <div>
+
                   <div className="topic-title">
                     Markdown Notes
                   </div>
@@ -235,20 +304,29 @@ export default function HomePage() {
                   <div className="topic-path">
                     Clean document reader
                   </div>
+
                 </div>
 
               </div>
+
             </div>
 
 
             <div className="card">
+
               <div className="topic-card">
 
                 <div className="topic-icon">
-                  ⚡
+
+                  <img
+                    src="/icons/circuit.svg"
+                    alt="Circuit"
+                  />
+
                 </div>
 
                 <div>
+
                   <div className="topic-title">
                     Circuit Diagrams
                   </div>
@@ -256,20 +334,29 @@ export default function HomePage() {
                   <div className="topic-path">
                     SVG and images supported
                   </div>
+
                 </div>
 
               </div>
+
             </div>
 
 
             <div className="card">
+
               <div className="topic-card">
 
                 <div className="topic-icon">
-                  🧪
+
+                  <img
+                    src="/icons/practical.svg"
+                    alt="Practical"
+                  />
+
                 </div>
 
                 <div>
+
                   <div className="topic-title">
                     Practical Learning
                   </div>
@@ -277,34 +364,43 @@ export default function HomePage() {
                   <div className="topic-path">
                     Experiments and projects
                   </div>
+
                 </div>
 
               </div>
+
             </div>
 
           </div>
 
         </div>
+
       </section>
 
 
-      {/* FORMULA PREVIEW */}
+      {/* FORMULA */}
       <section className="section">
+
         <div className="content-container">
 
           <div className="card">
 
             <div className="section-header">
+
               <div>
+
                 <h2 className="section-title">
-                  ⚡ Quick Formula
+                  Quick Formula
                 </h2>
 
                 <p className="section-description">
                   Important electrical relationships.
                 </p>
+
               </div>
+
             </div>
+
 
             <div
               style={{
@@ -324,6 +420,7 @@ export default function HomePage() {
           </div>
 
         </div>
+
       </section>
 
 
@@ -336,54 +433,83 @@ export default function HomePage() {
           fontSize: "12px"
         }}
       >
+
         <div className="content-container">
+
           <div>
-            ⚡ Electrical Circuit and Network
+            Electrical Circuit and Network
           </div>
 
           <div style={{ marginTop: "5px" }}>
             Powered by GitHub • LK Study Studio
           </div>
+
         </div>
+
       </footer>
 
 
       {/* MOBILE NAV */}
       <nav className="bottom-nav">
+
         <div className="bottom-nav-inner">
 
           <a
             href="/"
             className="active"
           >
-            <span className="bottom-nav-icon">
-              🏠
-            </span>
-            Home
+
+            <img
+              src="/icons/home.svg"
+              alt=""
+              className="bottom-nav-icon"
+            />
+
+            <span>Home</span>
+
           </a>
+
 
           <a href="#study-material">
-            <span className="bottom-nav-icon">
-              📚
-            </span>
-            Units
+
+            <img
+              src="/icons/unit.svg"
+              alt=""
+              className="bottom-nav-icon"
+            />
+
+            <span>Units</span>
+
           </a>
+
 
           <a href="/practical">
-            <span className="bottom-nav-icon">
-              🧪
-            </span>
-            Practical
+
+            <img
+              src="/icons/practical.svg"
+              alt=""
+              className="bottom-nav-icon"
+            />
+
+            <span>Practical</span>
+
           </a>
 
+
           <a href="#search">
-            <span className="bottom-nav-icon">
-              🔍
-            </span>
-            Search
+
+            <img
+              src="/icons/search.svg"
+              alt=""
+              className="bottom-nav-icon"
+            />
+
+            <span>Search</span>
+
           </a>
 
         </div>
+
       </nav>
 
     </main>
