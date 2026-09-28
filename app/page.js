@@ -1,95 +1,46 @@
-"use client";
+import {
+  getGithubTree,
+  formatTitle,
+  pathToSlug
+} from "@/lib/github";
 
-import { useEffect, useState } from "react";
+import LoadingScreen from "@/components/LoadingScreen";
+import Header from "@/components/Header";
+import FolderCard from "@/components/FolderCard";
+import TopicCard from "@/components/TopicCard";
+import Search from "@/components/Search";
+import BottomNav from "@/components/BottomNav";
 
-export default function HomePage() {
-  const [loading, setLoading] = useState(true);
+export const dynamic = "force-dynamic";
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1400);
+export default async function HomePage() {
+  const tree = await getGithubTree();
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <main className="loading-screen">
-        <div className="loading-content">
-
-          <img
-            src="/icons/electrical.svg"
-            alt="Electrical"
-            className="loading-logo"
-          />
-
-          <div className="loading-title">
-            Electrical Circuit
-          </div>
-
-          <div className="loading-text">
-            Loading Study Materials...
-          </div>
-
-          <div className="loading-line" />
-
-        </div>
-      </main>
+  const folders = tree
+    .filter((item) => item.type === "tree")
+    .filter(
+      (item) => !item.path.includes("/")
     );
-  }
+
+  const files = tree
+    .filter(
+      (item) =>
+        item.type === "blob" &&
+        item.path.toLowerCase().endsWith(".md")
+    )
+    .map((item) => ({
+      name: formatTitle(
+        item.path.split("/").pop()
+      ),
+      path: item.path,
+      slug: pathToSlug(item.path)
+    }));
 
   return (
     <main className="app-container electrical-grid">
 
-      {/* HEADER */}
-      <header className="site-header">
-        <div className="header-inner">
+      <Header />
 
-          <a href="/" className="brand">
-
-            <div className="brand-icon">
-              <img
-                src="/icons/electrical.svg"
-                alt="Electrical Circuit"
-              />
-            </div>
-
-            <div className="brand-text">
-
-              <div className="brand-title">
-                Electrical Circuit
-              </div>
-
-              <div className="brand-subtitle">
-                LK Study Studio
-              </div>
-
-            </div>
-
-          </a>
-
-          <div className="search-box">
-
-            <img
-              src="/icons/search.svg"
-              alt=""
-              className="search-icon"
-            />
-
-            <input
-              type="search"
-              placeholder="Search topics..."
-              aria-label="Search topics"
-            />
-
-          </div>
-
-        </div>
-      </header>
-
-
-      {/* HERO */}
       <section className="hero">
 
         <div className="circuit-glow" />
@@ -116,8 +67,8 @@ export default function HomePage() {
             </h1>
 
             <p className="hero-description">
-              Study your Electrical Circuit and Network
-              syllabus through organized notes, diagrams,
+              Study Electrical Circuit and Network
+              through organized notes, diagrams,
               formulas and practical experiments.
             </p>
 
@@ -153,7 +104,6 @@ export default function HomePage() {
       </section>
 
 
-      {/* STUDY MATERIAL */}
       <section
         className="section"
         id="study-material"
@@ -170,7 +120,7 @@ export default function HomePage() {
               </h2>
 
               <p className="section-description">
-                Organized directly from your GitHub repository.
+                Study materials from GitHub.
               </p>
 
             </div>
@@ -178,87 +128,52 @@ export default function HomePage() {
           </div>
 
 
-          <div className="card-grid">
+          {folders.length > 0 ? (
 
-            <a
-              href="/topic/basic-of-electrical-circuit"
-              className="card folder-card"
-            >
+            <div className="card-grid">
 
-              <div className="folder-icon">
+              {folders.map((folder) => (
 
-                <img
-                  src="/icons/folder.svg"
-                  alt="Folder"
+                <FolderCard
+                  key={folder.path}
+                  name={formatTitle(
+                    folder.path.split("/").pop()
+                  )}
+                  href={`/topic/${folder.path
+                    .split("/")
+                    .map((part) =>
+                      encodeURIComponent(
+                        part.toLowerCase()
+                      )
+                    )
+                    .join("/")}`}
                 />
 
-              </div>
-
-              <div className="folder-title">
-                Basic Of Electrical Circuit
-              </div>
-
-              <div className="folder-meta">
-                Study topics →
-              </div>
-
-            </a>
-
-
-            <a
-              href="/practical"
-              className="card folder-card"
-            >
-
-              <div className="folder-icon">
-
-                <img
-                  src="/icons/practical.svg"
-                  alt="Practical"
-                />
-
-              </div>
-
-              <div className="folder-title">
-                Electrical Practical
-              </div>
-
-              <div className="folder-meta">
-                Experiments and projects →
-              </div>
-
-            </a>
-
-
-            <div className="card folder-card">
-
-              <div className="folder-icon">
-
-                <img
-                  src="/icons/circuit.svg"
-                  alt="Circuit"
-                />
-
-              </div>
-
-              <div className="folder-title">
-                Circuit Diagrams
-              </div>
-
-              <div className="folder-meta">
-                SVG and images
-              </div>
+              ))}
 
             </div>
 
-          </div>
+          ) : (
+
+            <div className="empty-state">
+
+              <h2>
+                No Study Material
+              </h2>
+
+              <p>
+                Add Markdown folders and files to GitHub.
+              </p>
+
+            </div>
+
+          )}
 
         </div>
 
       </section>
 
 
-      {/* STUDY TOOLS */}
       <section className="section">
 
         <div className="content-container">
@@ -268,11 +183,11 @@ export default function HomePage() {
             <div>
 
               <h2 className="section-title">
-                Study Tools
+                Topics
               </h2>
 
               <p className="section-description">
-                Everything focused on Electrical Circuit study.
+                Available Markdown study notes.
               </p>
 
             </div>
@@ -280,105 +195,40 @@ export default function HomePage() {
           </div>
 
 
-          <div className="card-grid">
+          {files.length > 0 && (
 
-            <div className="card">
+            <div className="card-grid">
 
-              <div className="topic-card">
+              {files.slice(0, 6).map((file) => (
 
-                <div className="topic-icon">
+                <TopicCard
+                  key={file.path}
+                  name={file.name}
+                  href={`/topic/${file.slug}`}
+                />
 
-                  <img
-                    src="/icons/notes.svg"
-                    alt="Notes"
-                  />
-
-                </div>
-
-                <div>
-
-                  <div className="topic-title">
-                    Markdown Notes
-                  </div>
-
-                  <div className="topic-path">
-                    Clean document reader
-                  </div>
-
-                </div>
-
-              </div>
+              ))}
 
             </div>
 
-
-            <div className="card">
-
-              <div className="topic-card">
-
-                <div className="topic-icon">
-
-                  <img
-                    src="/icons/circuit.svg"
-                    alt="Circuit"
-                  />
-
-                </div>
-
-                <div>
-
-                  <div className="topic-title">
-                    Circuit Diagrams
-                  </div>
-
-                  <div className="topic-path">
-                    SVG and images supported
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div className="card">
-
-              <div className="topic-card">
-
-                <div className="topic-icon">
-
-                  <img
-                    src="/icons/practical.svg"
-                    alt="Practical"
-                  />
-
-                </div>
-
-                <div>
-
-                  <div className="topic-title">
-                    Practical Learning
-                  </div>
-
-                  <div className="topic-path">
-                    Experiments and projects
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
+          )}
 
         </div>
 
       </section>
 
 
-      {/* FORMULA */}
+      <section className="section">
+
+        <div className="content-container">
+
+          <Search files={files} />
+
+        </div>
+
+      </section>
+
+
       <section className="section">
 
         <div className="content-container">
@@ -394,13 +244,12 @@ export default function HomePage() {
                 </h2>
 
                 <p className="section-description">
-                  Important electrical relationships.
+                  Important electrical relationship.
                 </p>
 
               </div>
 
             </div>
-
 
             <div
               style={{
@@ -424,7 +273,6 @@ export default function HomePage() {
       </section>
 
 
-      {/* FOOTER */}
       <footer
         style={{
           padding: "40px 0 100px",
@@ -449,68 +297,7 @@ export default function HomePage() {
       </footer>
 
 
-      {/* MOBILE NAV */}
-      <nav className="bottom-nav">
-
-        <div className="bottom-nav-inner">
-
-          <a
-            href="/"
-            className="active"
-          >
-
-            <img
-              src="/icons/home.svg"
-              alt=""
-              className="bottom-nav-icon"
-            />
-
-            <span>Home</span>
-
-          </a>
-
-
-          <a href="#study-material">
-
-            <img
-              src="/icons/unit.svg"
-              alt=""
-              className="bottom-nav-icon"
-            />
-
-            <span>Units</span>
-
-          </a>
-
-
-          <a href="/practical">
-
-            <img
-              src="/icons/practical.svg"
-              alt=""
-              className="bottom-nav-icon"
-            />
-
-            <span>Practical</span>
-
-          </a>
-
-
-          <a href="#search">
-
-            <img
-              src="/icons/search.svg"
-              alt=""
-              className="bottom-nav-icon"
-            />
-
-            <span>Search</span>
-
-          </a>
-
-        </div>
-
-      </nav>
+      <BottomNav />
 
     </main>
   );
