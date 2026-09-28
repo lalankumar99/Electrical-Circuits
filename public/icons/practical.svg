@@ -1,0 +1,143 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  fill="none"
+>
+  <defs>
+    <linearGradient
+      id="practicalGradient"
+      x1="8"
+      y1="8"
+      x2="56"
+      y2="56"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#6FF7FF"/>
+      <stop offset="0.5" stop-color="#00D9FF"/>
+      <stop offset="1" stop-color="#167BFF"/>
+    </linearGradient>
+
+    <filter
+      id="practicalGlow"
+      x="-80%"
+      y="-80%"
+      width="260%"
+      height="260%"
+    >
+      <feGaussianBlur
+        stdDeviation="2"
+        result="blur"
+      />
+
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect
+    x="9"
+    y="10"
+    width="46"
+    height="44"
+    rx="8"
+    stroke="url(#practicalGradient)"
+    stroke-width="2.5"
+    filter="url(#practicalGlow)"
+  />
+
+  <circle
+    cx="32"
+    cy="31"
+    r="13"
+    stroke="#00E5FF"
+    stroke-width="2"
+  />
+
+  <path
+    d="M32 22V31L38 35"
+    stroke="url(#practicalGradient)"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <circle
+    cx="32"
+    cy="31"
+    r="3"
+    fill="#00E5FF"
+    filter="url(#practicalGlow)"
+  />
+
+  <path
+    d="M15 18H22"
+    stroke="#00E5FF"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M42 18H49"
+    stroke="#167BFF"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <circle
+    cx="15"
+    cy="18"
+    r="2"
+    fill="#00E5FF"
+  />
+
+  <circle
+    cx="49"
+    cy="18"
+    r="2"
+    fill="#167BFF"
+  />
+
+  <path
+    d="M15 45H23"
+    stroke="#00D9FF"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M41 45H49"
+    stroke="#167BFF"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <circle
+    cx="15"
+    cy="45"
+    r="2"
+    fill="#00D9FF"
+  />
+
+  <circle
+    cx="49"
+    cy="45"
+    r="2"
+    fill="#167BFF"
+  />
+
+  <path
+    d="M32 10V15"
+    stroke="#00E5FF"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+
+  <path
+    d="M32 49V54"
+    stroke="#167BFF"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+</svg>
